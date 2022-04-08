@@ -28,7 +28,7 @@ class MemberServiceTest {
         assertThat(member).isEqualTo(memberRepository.findOne(saveId));
     }
 
-    @Test
+    @Test()
     public void duplicateMember() {
         Member member1 = new Member();
         member1.setName("kim");
