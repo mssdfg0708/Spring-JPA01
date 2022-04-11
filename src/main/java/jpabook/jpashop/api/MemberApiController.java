@@ -33,19 +33,6 @@ public class MemberApiController {
         return new Result<>(collect.size(), collect);
     }
 
-    @Data
-    @AllArgsConstructor
-    static class Result<T> {
-        private int count;
-        private T data;
-    }
-
-    @Data
-    @AllArgsConstructor
-    static class MemberDto {
-        private String name;
-    }
-
     @PostMapping("/api/v1/members")
     public CreateMemberResponse saveMemberV1(@RequestBody @Valid Member member) {
         Long id = memberService.join(member);
@@ -70,6 +57,19 @@ public class MemberApiController {
         memberService.update(id, request.getName());
         Member findMember = memberService.findOne(id);
         return new UpdateMemberResponse(id, findMember.getName());
+    }
+
+    @Data
+    @AllArgsConstructor
+    static class Result<T> {
+        private int count;
+        private T data;
+    }
+
+    @Data
+    @AllArgsConstructor
+    static class MemberDto {
+        private String name;
     }
 
     @Data
