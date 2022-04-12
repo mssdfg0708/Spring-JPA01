@@ -23,7 +23,7 @@ public class MemberApiController {
         return memberService.findMembers();
     }
 
-    @GetMapping("api/v2/members")
+    @GetMapping("api/members")
     public Result<List<MemberDto>> memberV2() {
         List<Member> findMembers = memberService.findMembers();
         List<MemberDto> collect = findMembers.stream()
@@ -39,7 +39,7 @@ public class MemberApiController {
         return new CreateMemberResponse(id);
     }
 
-    @PostMapping("/api/v2/members")
+    @PostMapping("/api/members")
     public CreateMemberResponse saveMemberV2(@RequestBody @Valid CreateMemberRequest request) {
 
         Member member = new Member();
@@ -49,7 +49,7 @@ public class MemberApiController {
         return new CreateMemberResponse(id);
     }
 
-    @PutMapping("/api/v2/members/{id}")
+    @PutMapping("/api/members/{id}")
     public UpdateMemberResponse updateMemberV2(
             @PathVariable("id") Long id,
             @RequestBody @Valid UpdateMemberRequest request) {

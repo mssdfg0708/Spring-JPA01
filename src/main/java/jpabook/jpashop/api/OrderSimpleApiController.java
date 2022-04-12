@@ -23,6 +23,12 @@ public class OrderSimpleApiController {
     private final OrderRepository orderRepository;
     private final OrderSimpleQueryRepository orderSimpleQueryRepository;
 
+    // simple-orders api main version
+    @GetMapping("api/simple-orders")
+    public List<SimpleOrderDto> orders() {
+        return ordersV3();
+    }
+
     @GetMapping("api/v1/simple-orders")
     public List<Order> ordersV1() {
         List<Order> all = orderRepository.findAllByCriteria(new OrderSearch());
